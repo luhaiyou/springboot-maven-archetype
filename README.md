@@ -13,4 +13,38 @@
   - common 项目一些通用的封装。
   - sdk 项目需要对外提供的sdk。
 ## 利用maven archetype创建项目
+### mvn archetype:create-from-project
+  利用maven 插件先生成模板,在项目根目录下执行 mvn archetype:create-from-project
+### install到本地
+  从项目根目录开始,进入 target/generated-sources/archetype目录 执行命令 maven install
+  安装之后会在本地目录生成一个文件  ~/.m2/repository/archetype-catalog.xml
+<p/>
 
+    ```<?xml version="1.0" encoding="UTF-8"?>
+    <archetype-catalog xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-catalog/1.0.0 http://maven.apache.org/xsd/archetype-catalog-1.0.0.xsd"
+    xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-catalog/1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <archetypes>
+    <archetype>
+    <groupId>td.demo.springboot</groupId>
+    <artifactId>springboot-template-archetype</artifactId>
+    <version>1.0.0</version>
+    <description>Parent pom providing dependency and plugin management for applications built with Maven</description>
+    </archetype>
+    </archetypes>
+    </archetype-catalog>```
+
+### 利用模板创建任务
+mvn archetype:generate -DarchetypeCatalog=local  -DinteractiveMode=false  -DgroupId=com.luhaiyou.demo -DartifactId=oauth-github -Dversion=1.0.0-SNAPSHORT -DarchetypeArtifactId=springboot-template-archetype -DarchetypeVersion=1.0.0 -DarchetypeGroupId=td.demo.springboot -Dpackage=com.demo  
+<p/>
+参数说明:
+
+   - archetypeCatalog=local 使用本地的 archetype模板.默认会是有maven central的模板 。
+   - interactiveMode=false 是否是有交互模式
+   - archetypeArtifactId=springboot-template-archetype archetype的构件id
+   - archetypeVersion=1.0.0 archetype 版本号
+   - archetypeGroupId=td.demo.springboot 组件groupId
+   - groupId=com.luhaiyou.demo 新建项目的groupId
+   - artifactId=oauth-github 新建项目的构件id
+   - version=1.0.0-SNAPSHOT  版本号
+   - package=com.demo  生成的代码的package 
