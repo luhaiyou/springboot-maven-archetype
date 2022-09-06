@@ -15,16 +15,13 @@
         <version>2.7.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>demo.springboot</groupId>
-    <artifactId>archetype</artifactId>
+    <groupId>td.demo.springboot</groupId>
+    <artifactId>springboot-template</artifactId>
     <version>1.0.0</version>
-
-    <name>spring-boot-archetype</name>
-    <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
-        <mybatis.plus..version>3.5.2</mybatis.plus..version>
+        <mybatis.plus.version>3.5.2</mybatis.plus.version>
         <mysql.version>8.0.30</mysql.version>
         <liquibase-core>4.15.0</liquibase-core>
         <lombok.version>1.18.24</lombok.version>
@@ -36,7 +33,7 @@
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis.plus..version}</version>
+                <version>${mybatis.plus.version}</version>
             </dependency>
             <dependency>
                 <groupId>mysql</groupId>
@@ -58,6 +55,12 @@
     </dependencyManagement>
     <build>
         <plugins>
+            <!-- 可以用来生成项目模板 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>3.2.1</version>
+            </plugin>
         </plugins>
     </build>
 
